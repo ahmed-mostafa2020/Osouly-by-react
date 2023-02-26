@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'ge';
+  src: url('./fonts/GE Dinar Two Medium/GE Dinar Two Medium.ttf');
+}
+
+/* body{
+  height: 3000px;
+} */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'ge';
+}
+
+a {
+  text-decoration: none;
+}
+
+p{
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+p {
+  font-family: 'ge';
+}

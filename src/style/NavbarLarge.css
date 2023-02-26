@@ -1,0 +1,203 @@
+*{
+  box-sizing: border-box;
+}
+
+ul{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+li{
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar{
+  width: 100%;
+  max-height: 60px;
+  background-color: #fff;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+.navbar .container{
+  max-width: 1135px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 100%;
+  direction: rtl;
+}
+
+.navbar .nav-menu{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar .nav-menu .nav-start{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.navbar .nav-menu .nav-start .nav-logo img{
+  height: auto;
+  max-width: 95px;
+  max-height: 67px;
+  margin-top: -18px;
+  padding-left: 10px ;
+}
+
+.navbar .nav-menu .nav-start ul.lists{
+  list-style: none;
+  padding: 0;
+}
+.navbar .nav-menu .nav-start ul.lists>li {
+  display: inline-block;
+  padding: 10px 7px;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.navbar .nav-menu .nav-start ul.lists>li>a{
+  font-size: 11px;
+  color: #2A2D34;
+  position: relative;
+  transition: all 0.1s ease-in-out;
+}
+.navbar .nav-menu .nav-start ul.lists>li:hover>a{
+  color: #00A79D;
+}
+.navbar .nav-menu .nav-start ul.lists>li.has-drop:hover{
+  background-color: #fafafa;
+  position: relative;
+}
+.navbar .nav-menu .nav-start ul.lists>li.has-drop{
+  position: relative;
+}
+
+.navbar .nav-menu .nav-start ul.lists>li.has-drop:hover>.dropdown{
+  display: block;
+  transition: all 0.2s ease-in-out;
+}
+.navbar .nav-menu .nav-start ul.lists>li.has-drop:hover>a::before{
+  display: block;
+}
+.navbar .nav-menu .nav-start  ul.lists>li>a.active{
+  color: #00A79D;
+}
+.navbar .nav-menu .nav-start  ul.lists>li>a.active::before{
+  content: '';
+  position: absolute;
+  bottom: -57%;
+  left: 50%;
+  transform: translate(-50%,35%);
+  border: 7px solid;
+  border-color: transparent transparent #00A79D transparent;
+}
+.navbar .nav-menu .nav-start ul.lists li.has-drop>a::before{
+  content: '';
+  position: absolute;
+  bottom: -57%;
+  left: 50%;
+  transform: translate(-50%,40%);
+  border: 5px solid;
+  border-color: transparent transparent #00A79D transparent;
+  display: none;
+  transition: all 0.1s ease-in-out;
+}
+
+.navbar .nav-end{
+  display: flex;
+  align-items: center;
+}
+.navbar .nav-end input{
+  width: 200px;
+  border-radius: 0px 5px 5px 0px;
+  border: 1px solid #adadad;
+  padding: 4px;
+  outline: none;
+  transition: all 0.1s ease-in-out;
+}
+.navbar .nav-end input:focus{
+  border-color: #00A79D;
+}
+.navbar .nav-end button{
+  font-size: 13px;
+  background-color: #6761a8;
+  color: #fff;
+  border-color: transparent;
+  width: 95px;
+  padding: 6px 5px;
+  border-radius: 5px 0px 0px 5px;
+  margin-left: 15px;
+  transition: all 0.1s ease-in-out;
+}
+.navbar .nav-end button:hover{
+  background-color: #5b5795;
+}
+.navbar .nav-end a.add{
+  color: #fff;
+  background-color: #FB3640;
+  border-radius: 5px;
+  width: 90px;
+  padding: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.1s ease-in-out;
+}
+.navbar .nav-end a.add:hover{
+  background-color: #fb1f2a;
+}
+
+.navbar .nav-menu .nav-start ul.lists>li.has-drop .dropdown{
+  background-color: #fff;
+  width: 170px;
+  border-top: 2px solid #e8e8e8;
+  border-radius: 0 0 5px 5px ;
+  position: absolute;
+  top: 43px;
+  right: 0px;
+  z-index: 99;
+  display: none;
+  transition: all 0.2s ease-in-out;
+}
+.navbar .nav-menu .nav-start ul.lists>li.has-drop .dropdown ul{
+  padding: 5px 0;
+}
+.navbar .nav-menu .nav-start ul.lists>li.has-drop .dropdown ul>li {
+  width: 100%;
+  padding: 7px 10px 7px 0;
+  transition: all 0.1s ease-in-out;
+}
+.navbar .nav-menu .nav-start ul.lists>li.has-drop .dropdown ul>li:hover{
+  background-color: #f3f3f3;
+}
+.navbar .nav-menu .nav-start ul.lists>li.has-drop .dropdown ul>li:not(:last-of-type){
+  border-bottom: 1px solid #e8e8e8;
+}
+.navbar .nav-menu .nav-start ul.lists>li.has-drop .dropdown ul>li>a{
+  color: #37393d;
+  font-size: 12px;
+  font-weight: 100;
+}
+
+
+
+
+
+@media (max-width: 1300px) {
+  .navbar .container{
+    max-width: 960px;
+  }
+}
+@media (max-width: 1200px) {
+  .navbar .container{
+    max-width: 800px;
+  }
+}

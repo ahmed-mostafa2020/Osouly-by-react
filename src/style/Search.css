@@ -1,0 +1,240 @@
+*{
+  box-sizing: border-box;
+}
+
+
+
+.search {
+  height: 170px;
+  background-color: #00A79D ;
+  width: 100%;
+  padding: 50px 0;
+  margin-bottom: 50px;
+}
+.search .container{
+  max-width: 1140px;
+}
+.search .box{
+  width: 100%;
+  padding: 10px 25px 15px 25px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 19px 25px #00000029;
+  /* opacity: 0.98; */
+  /* height: 190px; */
+  margin-top: -125px;
+  position: relative;
+  direction: rtl;
+  z-index: 100;
+}
+.search .box::before{
+  content: '';
+  position: absolute;
+  top: -19px;
+  right: 38px;
+  border: 10px solid ;
+  border-color: transparent transparent #fff transparent;
+}
+
+.search .box p{
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  margin-right: 25px;
+  position: relative;
+}
+.search .box p::before{
+  content: '';
+  display: inline-block;
+  position: absolute;
+  right: -20px;
+  top: 10px;
+  border: 8px solid ;
+  border-color: transparent  #00A79D transparent transparent ;
+}
+
+.search .box .units, .search .box .place{
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
+  width: 100%;
+  margin-bottom: 5px;
+}
+.search .box .units .type,
+.search .box .units .area,
+.search .box .units .deposit,
+.search .box .place .country,
+.search .box .place .city,
+.search .box .search-btn {
+  width: 33.33%;
+  padding: 7px;
+    
+}
+.search .box .units .type label,
+.search .box .units .area label,
+.search .box .units .deposit label{
+  width: 100%;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 100;
+  color: #5e5f63;
+
+}
+.search .box .units .type .dropdown,
+.search .box .place .country .dropdown,
+.search .box .place .city .dropdown{
+  display: inline-block;
+  width: 100%;
+}
+.search .box .units .type .dropdown button,
+.search .box .place .country .dropdown button,
+.search .box .place .city .dropdown button{
+  width: 100%;
+  background-color: #fff;
+  color: #939598;
+  display: flex;
+  justify-content: flex-start;
+  direction: rtl;
+  border-color: #afafb0;
+  padding: 7px 5px;
+  font-size: 12px;
+  font-weight: 100;
+  cursor: text;
+  position: relative;
+  border-radius: 3px;
+}
+.search .box .units .dropdown button::after,
+.search .box .place .dropdown button::after{
+  display: none;
+}
+.search .box .units .dropdown button::before,
+.search .box .place .dropdown button::before{
+  display: inline-block;
+  margin-left: 15px;
+  content: "";
+  margin-top: 5px;
+  border-top: 6px solid;
+  border-right: 6px solid transparent;
+  border-bottom: 0;
+  border-left: 6px solid transparent;
+  transition: all 0.1s linear;
+  /* transform: rotate(180deg); */
+}
+
+.search .box .units .type .dropdown ul,
+.search .box .place .country .dropdown ul,
+.search .box .place .city .dropdown ul
+{
+  width: 100%;
+  padding: 5px 0;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+  border: 1px solid #959697;
+  border-top-style: none;
+  border-radius: 0 0 5px 5px ;
+  background-color: #fff;
+  z-index: 999;
+  position: absolute !important;
+  top: calc(100% - 2px) !important;
+  transform: none !important;
+  direction: ltr ;
+}
+.search .box .units .type .dropdown ul, .search .box .place .city .dropdown ul{
+  height: 350px;
+  overflow-y: auto;
+}
+.search .box .place .country .dropdown ul{
+  height: 112px;
+}
+/* .search .box .place .city .dropdown ul{
+  height: 112px;
+} */
+
+.search .box .units .type .dropdown ul li,.search .box .place .country .dropdown ul li
+,.search .box .place .city .dropdown ul li  {
+  width: 100%;
+  text-align: right;
+  transition: all 0.2s ease-in-out;
+
+}
+.search .box .units .type .dropdown ul li:hover a,
+.search .box  .place .country .dropdown ul li:hover a,
+.search .box  .place .city .dropdown ul li:hover a{
+  color: #fff;
+  background-color: #00A79D;
+}
+.search .box .units .type .dropdown ul li a,
+.search .box .place  .dropdown ul li a{
+  font-size: 10px;
+  font-weight: 100;
+}
+
+.search .box .area input,.search .box .deposit input {
+  min-width: 49%;
+  color: #939598;
+  font-size: 11px;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 100;
+  border-radius: 3px;
+  outline: none;
+  border: 1px solid #afafb0;
+}
+.search .box .area input:focus, .search .box .deposit input:focus{
+  border-color: #00A79D;
+}
+.search .box .area input:first-of-type, .search .box .deposit input:first-of-type{
+  margin-left: 2%;
+}
+
+.search .box .search-btn button{
+  width: 100%;
+  padding: 7px;
+  outline: none;
+  border: 1px solid #00A79D;
+  border-radius: 3px;
+  background-color:#00A79D;
+  color: #fff;
+  font-size: 13px;
+}
+.search .box .search-btn button:hover{
+  background-color: #00978d;
+}
+
+
+
+
+@media (max-width: 1300px){
+  .search .container{
+    max-width: 975px;
+  }
+  .search .box{
+    margin-top: -110px;
+  }
+}
+
+@media (max-width: 750px){
+  .search{
+    height: auto;
+    padding: 30px 10px;
+  }
+  /* .search .container{
+    max-width: 975px;
+  } */
+  .search .box{
+    margin-top: 0px;
+  }
+  .search .box .units, .search .box .place {
+    display: flex;
+    flex-wrap: wrap;
+  }
+.search .box .units .type,
+.search .box .units .area,
+.search .box .units .deposit,
+.search .box .place .country,
+.search .box .place .city,
+.search .box .search-btn{
+  width: 100% ;
+}
+  
+}
