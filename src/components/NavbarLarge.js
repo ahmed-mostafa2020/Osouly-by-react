@@ -11,8 +11,6 @@ function NavbarLarge() {
 
   const url = 'https://test.osouly.com/public/api/data';
 
-  
-
 
   // send requests
   const getServices = async () => {
@@ -65,6 +63,9 @@ function NavbarLarge() {
     </>
   });
 
+  // function myFunction(x) {
+  //   x.classList.toggle("change");
+  // }
 
   return (
     <section className='navbar'>
@@ -127,6 +128,15 @@ function NavbarLarge() {
           <button>بحث الوحدات</button>
           <Link className='add' to='./properties/create'>إضافة وحدة</Link>
         </div>
+
+        {/* burger icon and side menu */}
+        {/* <div>
+          <div class="burger" >
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+          </div>
+        </div> */}
 
       </div>
     </section>

@@ -1,0 +1,144 @@
+*{
+  box-sizing: border-box;
+}
+ul{
+  padding: 0;
+  margin: 0;
+}
+
+.props{
+  padding: 70px 0;
+}
+.props .container{
+  max-width: 1150px;
+  margin-bottom: 40px;
+
+}
+
+.props .cards-box{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  direction: rtl;
+}
+.props .cards-box .card{
+  height: auto;
+  width: 49%;
+  margin-bottom: 15px;
+}
+.props .cards-box .card .upper-box{
+  width: 100%;
+  min-height: 300px;
+}
+.props .cards-box .card .carousel{
+  height: 100%;
+}
+
+.props .cards-box .card .upper-box img {
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  position: relative;
+  border-radius: 5px 5px 0 0 !important;
+}
+
+
+.props .search-col{
+  padding-left: 25px;
+}
+.props .search-col .title{
+  text-align: right;
+  width: 100%;
+}
+.props .search-col .title p {
+  font-size: 22px;
+  font-weight: 100;
+  color: #282a2f;
+  line-height: 1.25;
+}
+.props .search-col .title p span{
+  display: inline-block;
+  border: 10px solid;
+  border-color: transparent #00A79D transparent transparent;
+  vertical-align: middle;
+}
+
+.props .search-col .table{
+  width: 100%;
+  border: 1px solid #e2e2e2;
+  border-radius: 5px;
+  padding: 0 15px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* unit part  */
+.props .search-col .table .unit-part,.props .search-col .table .desc,.props .search-col .table .location {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.props .search-col .table .unit-part,.props .search-col .table .desc{
+  border-bottom: 2px solid #e2e2e2;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+
+}
+.props .search-col .table .unit-part{
+  padding-top: 20px;
+}
+.props .search-col .table .location{
+  padding-bottom: 5px;
+}
+.props .search-col .table button.drop{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  direction: rtl;
+  background-color: transparent;
+  color: #403f3f;
+  border: none;
+  font-size: 13px;
+  padding: 0 0 15px 0;
+}
+.props .search-col .table button.drop p{
+  padding: 0;
+}
+.props .search-col .table button.drop span{
+  color: #a3a2a2;
+  border: 1px solid #c9c9c9;
+  padding: 3px 6px 3px;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+
+
+
+
+
+@media (max-width: 1300px){
+  .props .container{
+    max-width: 975px;
+  }
+}
+
+@media (max-width: 1200px){
+  .props .cards-box .card .upper-box{
+    height: auto !important;
+  }
+}
+
+@media (max-width: 770px){
+  .props .cards-box .card {
+    width: 100% ;
+  }
+}

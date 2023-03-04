@@ -1,7 +1,6 @@
 import React from 'react';
 import '../style/About.css';
 import logo from '../assets/logo.png';
-import thumbNail from '../assets/kara-eads-L7EwHkq1B2s-unsplash@2x.png';
 import { useState, useEffect } from 'react';
 
 function About() {

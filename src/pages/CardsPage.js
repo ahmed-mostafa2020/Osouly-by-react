@@ -24,7 +24,7 @@ function CardsPage() {
 
 
   const renderedCards = cards.map( (card) => {
-    return <Cards card={card} key={card.id} />;
+    return <Cards card={card} key={card.id} slide={true} />;
   });
 
   return (
