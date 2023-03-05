@@ -18,12 +18,13 @@ ul{
 .props .cards-box{
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   direction: rtl;
+  height: fit-content
 }
 .props .cards-box .card{
-  height: auto;
+  height: fit-content;
   width: 49%;
   margin-bottom: 15px;
 }
@@ -80,7 +81,7 @@ ul{
 .props .search-col .table .unit-part,.props .search-col .table .desc,.props .search-col .table .location {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   flex-wrap: wrap;
   text-align: center;
 }
@@ -88,7 +89,9 @@ ul{
   border-bottom: 2px solid #e2e2e2;
   margin-bottom: 25px;
   padding-bottom: 10px;
-
+}
+.props .search-col .table .desc{
+  padding-bottom: 10px;
 }
 .props .search-col .table .unit-part{
   padding-top: 20px;
@@ -107,6 +110,7 @@ ul{
   border: none;
   font-size: 13px;
   padding: 0 0 15px 0;
+  transition: none;
 }
 .props .search-col .table button.drop p{
   padding: 0;
@@ -120,8 +124,230 @@ ul{
   font-size: 12px;
 }
 
+.props .search-col .table .collapse{
+  width: 100%;
+}
+.props .search-col .table .wrap{
+  padding: 0 15px;
+  width: 100%;
+}
+
+.props .search-col .table .card-body{
+  padding: 0;
+  width: 100%;
+}
+.props .search-col .table .card{
+  /* padding-right: 15px; */
+  text-align: right;
+  padding-bottom: 20px;
+  height: auto;
+  margin-bottom: 10px;
+}
+.props .search-col .table .line{
+  border-bottom: 2px solid #eeeded;
+}
+.props .search-col .table label{
+  width: 100%;
+  display: inline-block;
+  font-size: 12px;
+  margin-bottom: 10px;
+  padding-top: 5px;
+}
+
+.props .search-col .table .unit-part .radio-box{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  direction: rtl;
+}
+.props .search-col .table .unit-part .radio-box label{
+  cursor: pointer;
+  width: auto;
+  font-size: 13px;
+  position: relative;
+  text-align: right;
+}
+.props .search-col .table .unit-part .radio-box input{
+  /* appearance: none; */
+  width: 15px;
+  height: 15px;
+  position: relative;
+  top: -2px;
+  margin-left: 10px;
+  cursor: pointer;
+
+}
+
+/* .props .search-col .table .unit-part .radio-box label::before  {
+  content: '';
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  top: 6px;
+  right: -16px;
+  position: relative;
+  background-color: #f4e8e8;
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid rgb(208, 206, 206);
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+.props .search-col .table .unit-part .radio-box:hover label::before {
+  border-color: #00A79D;
+}
+
+.props .search-col .table .unit-part .radio-box input:checked + label::after{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  top: 14px;
+  right: -13px;
+  position: absolute;
+  background-color: #8e2323;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  transition: all 0.1s ease-in-out;
+} */
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .props .search-col .table .card input[type="range"]{
+    width: 100%;
+    cursor: grab;
+    height: 3px;
+    -webkit-appearance: none;
+    background-color: #e2dede;
+    border-radius: 5px;
+
+  }
+  .props .search-col .table .card input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    border: 1px solid #7a7777;
+    background-color: #fff;
+    margin-top: -2.5px;
+  }
+  .props .search-col .table .card input[type="range"]::-webkit-slider-runnable-track{
+    -webkit-appearance: none;
+    background-color: #dbdbdb;
+    background-color: #00A79D;
+    height: 100%;
+    border-radius: 5px;
+  }
+}
+
+.props .search-col .table .card .box{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  direction: rtl;
+  width: 100%;
+}
+.props .search-col .table .card input[type="text"]{
+  outline: none;
+  width: 48%;
+  display: inline-block;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: right;
+  padding-right: 7px;
+  font-size: 13px;
+  transition: all 0.1s linear;
+}
+.props .search-col .table .card input[type="text"]:focus{
+  border-color: #00A79D;
+}
 
 
+.props .search-col .table .country{
+  width: 100%;
+}
+.props .dropdown{
+  display: inline-block;
+  width: 100%;
+}
+
+.props .country .dropdown button,
+.props .city .dropdown button{
+  width: 100%;
+  background-color: #fff;
+  color: #939598;
+  display: flex;
+  justify-content: flex-start;
+  direction: rtl;
+  border-color: #afafb0;
+  padding: 7px 5px;
+  font-size: 11px;
+  font-weight: 100;
+  cursor: text;
+  position: relative;
+  border-radius: 3px;
+}
+.props .country .dropdown button{
+  margin-bottom: 10px;
+}
+.props .dropdown button::after{
+  display: none;
+}
+.props .dropdown button::before{
+  display: inline-block;
+  margin-left: 15px;
+  content: "";
+  margin-top: 5px;
+  border-top: 6px solid;
+  border-right: 6px solid transparent;
+  border-bottom: 0;
+  border-left: 6px solid transparent;
+  transition: all 0.1s linear;
+  /* transform: rotate(180deg); */
+}
+
+.props .country .dropdown ul,
+.props .city .dropdown ul{
+  width: 100%;
+  padding: 5px 0;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+  border: 1px solid #959697;
+  border-top-style: none;
+  border-radius: 0 0 5px 5px ;
+  background-color: #fff;
+  z-index: 999;
+  position: absolute !important;
+  top: calc(100% - 2px) !important;
+  transform: none !important;
+  direction: ltr ;
+}
+.props .city .dropdown ul{
+  height: 350px;
+  overflow-y: auto;
+}
+.props .country .dropdown ul{
+  height: 112px;
+  top: calc(100% - 13px) !important;
+
+}
+
+.props .country .dropdown ul li,
+.props .city .dropdown ul li  {
+  width: 100%;
+  text-align: right;
+  transition: all 0.2s ease-in-out;
+}
+
+.props .country .dropdown ul li:hover a,
+.props .city .dropdown ul li:hover a{
+  color: #fff;
+  background-color: #00A79D;
+}
+.props .dropdown ul li a{
+  font-size: 10px;
+  font-weight: 100;
+}
 
 
 

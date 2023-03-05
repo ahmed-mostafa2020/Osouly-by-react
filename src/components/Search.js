@@ -14,19 +14,19 @@ function Search () {
   const url = 'https://test.osouly.com/public/api/data';
   const url2 = 'https://test.osouly.com/public/api/';
 
+    // fake api for countries
+    const countries =[
+      {id: '1', name: 'مصر'},
+      {id: '2', name: 'السعودية'},
+      {id: '3', name: 'الإمارات'},
+      {id: '4', name: 'قطر'},
+  ]
+
   const getTypes = async () => {
     await fetch(url).then((res) => res.json()).then((data) => {
       setOptions(data.data.property_type);
     });
   }
-
-  // fake api for countries
-  const countries =[
-    {id: '1', name: 'مصر'},
-    {id: '2', name: 'السعودية'},
-    {id: '3', name: 'الإمارات'},
-    {id: '4', name: 'قطر'},
-]
 
 const getCities = async () => {
   const header =  {  
@@ -48,7 +48,6 @@ const getCities = async () => {
 
   const typeChange = (option) => {
     setPlaceHolderType(option);
-    
   };
 
   const renderedTypes = options.map((option) => {
