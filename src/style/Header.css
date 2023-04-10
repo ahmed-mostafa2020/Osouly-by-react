@@ -2,7 +2,7 @@ ul{
   margin: 0;
 }
 
-.header{
+header{
   background-color: #EFF6EE;
   height: 40px;
   width: 100%;
@@ -11,33 +11,33 @@ ul{
   flex-direction: row;
 }
 
-.header::after {
+header::after {
   content: "";
   border-bottom: 40px solid white;
   border-left: 30px solid transparent;
 }
-.header::before {
+header::before {
   content: "";
   border-bottom: 40px solid white;
   border-right: 30px solid transparent;
 }
 
-.header .container{
+header .container{
   max-width: 1152px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
-.header .container .icon-box {
+header .container .icon-box {
   display: flex;
   align-items: center;
   direction: rtl;
 }
-.header .container .icon-box div{
+header .container .icon-box div{
   display: inline-block;
   margin-left: 10px;
 }
-.header .container .user{
+header .container .user{
   border-radius: 50%;
   border: 1px solid #B8B8B8;
   padding: 2px;
@@ -46,26 +46,26 @@ ul{
   color: #c6c6c6;
   vertical-align: text-bottom;
 }
-.header .container .icon-box .user:hover{
+header .container .icon-box .user:hover{
   color: #a7a7a7;
 }
-.header .container .icon-box .text, .header .container .icon-box .dash{
+header .container .icon-box .text, header .container .icon-box .dash{
   color: #00A79D;
   font-size: 11px;
   font-weight: 300;
   transition: all 0.1s ease-in-out;
 }
-.header .container .icon-box .text:hover{
+header .container .icon-box .text:hover{
   color: #006e67;
 }
-.header .container .icon-box .dash{
+header .container .icon-box .dash{
   margin-bottom: -4px ;
 }
-.header .container .icon-box .social{
+header .container .icon-box .social{
   color: #7B7B7B;
   vertical-align: text-bottom ;
 }
-.header .container .icon-box button{
+header .container .icon-box button{
   border: 1px solid #00A79D;
   border-radius: 600px;
   width: 29px;
@@ -74,38 +74,44 @@ ul{
   text-align: center;
   margin-bottom: 2px;
 }
-.header .container .icon-box button.ar{
+header .container .icon-box button.ar{
   margin-right: 5px;
   color: #fff;
   background-color: #00A79D;
   transition: all 0.1s ease-in-out;
 }
-.header .container .icon-box button.ar:hover{
+header .container .icon-box button.ar:hover{
   background-color: #008f85;
 }
-.header .container .icon-box button.en {
+header .container .icon-box button.en {
   background-color: transparent;
   color: #00A79D;
   margin-right: -5px;
   transition: all 0.1s ease-in-out;
 }
-.header .container .icon-box button.en:hover{
+header .container .icon-box button.en:hover{
   color: #fff;
   background-color: #00A79D;
 }
 
 @media (max-width: 1300px) {
-  .header .container{
+  header .container{
     max-width: 975px;
   }
 }
 @media (max-width: 1200px) {
-  .header .container{
+  header .container{
     max-width: 815px;
   }
 }
 @media (max-width: 750px) {
-  .header .container, .header::after , .header::before{
+  header .container{
+    justify-content: center;
+  }
+  header .social , header::after , header::before{
     display: none;
+  }
+  header .language{
+    display: none !important;
   }
 }

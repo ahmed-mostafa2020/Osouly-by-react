@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Slider from '../components/Slider';
 import { useState, useEffect } from 'react';
 import '../style/Slider.css';
 
-function SliderPage () {
+function SliderList () {
 
   const [slidersWeb, setSlidersWeb] = useState([]);
   const url = 'https://test.osouly.com/public/api/';
 
   // api request with header
-  const getSlidersWeb = async () => {
+  const getSlidersWeb = useCallback (async () => {
     const header =  {  
       method: 'GET',
       headers: {
@@ -21,7 +21,7 @@ function SliderPage () {
     await fetch(`${url}home`, header).then((res) => res.json()).then((data) => {
       setSlidersWeb(data.data.slider_web);
     });
-  }
+  },[])
 
   useEffect(() => {
     getSlidersWeb();
@@ -63,4 +63,4 @@ function SliderPage () {
   )
 }
 
-export default SliderPage;
+export default SliderList;

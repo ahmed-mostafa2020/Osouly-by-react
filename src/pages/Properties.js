@@ -1,16 +1,16 @@
 import React from "react";
 import "../style/Props.css";
-import PropsCardsPage from "./PropsCardsPage";
-import PropsSearchPage from "./PropsSearchPage";
+import CardsPropertiesList from "./CardsPropertiesList";
+import SearchPropertiesList from "./SearchPropertiesList";
 
-function PropertiesPage() {
+function Properties() {
   return (
     <>
       <section className="props">
         <div className="container">
           <div className="row">
-            <PropsCardsPage />
-            <PropsSearchPage />
+            <CardsPropertiesList />
+            <SearchPropertiesList />
           </div>
         </div>
       </section>
@@ -18,4 +18,4 @@ function PropertiesPage() {
   );
 }
 
-export default PropertiesPage;
+export default Properties;

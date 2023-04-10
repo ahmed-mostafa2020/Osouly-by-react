@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import '../style/NavbarLarge.css';
 import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
@@ -13,7 +13,7 @@ function NavbarLarge() {
 
 
   // send requests
-  const getServices = async () => {
+  const getServices = useCallback (async () => {
     const header =  {  
       method: 'GET',
       headers: {
@@ -24,9 +24,9 @@ function NavbarLarge() {
     await fetch(url, header).then((res) => res.json()).then((data) => {
       setServiceDrops(data.data.services);
     });
-  }
+  },[])
 
-  const getPages= async () => {
+  const getPages= useCallback (async () => {
     const header =  {  
       method: 'GET',
       headers: {
@@ -37,7 +37,7 @@ function NavbarLarge() {
     await fetch(url, header).then((res) => res.json()).then((data) => {
       setPageDrops(data.data.pages);
     });
-  }
+  },[])
 
 
   useEffect(() => {
@@ -49,26 +49,26 @@ function NavbarLarge() {
   // listing
   const renderedServices= serviceDrops.map((serviceDrop) => {
     return <>
-        <li key={serviceDrop.id}>
-          <Link to='./'>{serviceDrop.title} </Link>
+        <li >
+          <Link to='./' key={serviceDrop.id}>{serviceDrop.title} </Link>
         </li>
     </>
   });
 
   const renderedPages= pageDrops.map((pageDrop) => {
     return <>
-        <li key={pageDrop.id}>
-          <Link to='./'>{pageDrop.title} </Link>
+        <li >
+          <Link to='./' key={pageDrop.id}>{pageDrop.title} </Link>
         </li>
     </>
   });
 
-  // function myFunction(x) {
+  // const myFunction = (x) => {
   //   x.classList.toggle("change");
   // }
 
   return (
-    <section className='navbar'>
+    <nav className='navbar'>
       <div className='container'>
       
         <div className='nav-menu'>
@@ -129,17 +129,58 @@ function NavbarLarge() {
           <Link className='add' to='./properties/create'>إضافة وحدة</Link>
         </div>
 
-        {/* burger icon and side menu */}
-        {/* <div>
-          <div class="burger" >
-            <div class="bar1"></div>
-            <div class="bar2"></div>
-            <div class="bar3"></div>
+                        {/* burger icon */}
+        <button class="burger-icon" type='button'  data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"  >
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </button>
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+          <div class="offcanvas-header">
+            <img src={logo} alt='logo'/>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
-        </div> */}
+          <div class="offcanvas-body">
+            <div>
+            <Link className='title active' to='./'><span></span>الرئيسية</Link>
+
+            <Link className='title' to='./#'><span></span>عن أصولى</Link>
+            <ul>
+            {renderedPages}
+            </ul>
+
+            <Link className='title' to='./contact'><span></span>تواصل معنا</Link>
+
+            <Link className='title' to='./#'><span></span>خدمات</Link>
+            <ul>
+            {renderedServices}
+            </ul>
+
+            <Link className='title' to='./#'><span></span>الوحدات</Link>
+            <ul>
+              <li>
+                <Link>الوحدات المضافة حديثا</Link>      
+              </li>
+              <li>
+                <Link>الوحدات المميزة</Link> 
+              </li>
+            </ul>
+
+
+            <div className='box'>
+              <input />
+              <button>بحث الوحدات</button>
+              <Link className='add' to='./properties/create'>إضافة وحدة</Link>
+            </div>
+
+            </div>
+            
+          </div>
+        </div>
 
       </div>
-    </section>
+    </nav>
   )
 }
 

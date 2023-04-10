@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Services from '../components/Services';
 import '../style/Services.css';
 import { FaChevronRight } from "react-icons/fa";
 import { useState, useEffect } from 'react';
 
-function ServicesPage () {
+function ServicesList () {
 
   const url = 'https://test.osouly.com/public/api/services';
   const[serviceItems, setServiceCItems] = useState([]);
 
-  const getServiceItems = async () => {
+  const getServiceItems = useCallback (async () => {
     await fetch(url).then((res)=> res.json()).then((data) => {
       setServiceCItems(data.data.items);
     })
-  }
+  },[])
 
   useEffect(() => {
     getServiceItems();
@@ -51,4 +51,4 @@ function ServicesPage () {
   )
 }
 
-export default ServicesPage;
+export default ServicesList;

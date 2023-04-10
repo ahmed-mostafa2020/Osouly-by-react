@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import '../style/Search.css';
 import { Link} from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -22,13 +22,13 @@ function Search () {
       {id: '4', name: 'قطر'},
   ]
 
-  const getTypes = async () => {
+  const getTypes = useCallback (async () => {
     await fetch(url).then((res) => res.json()).then((data) => {
       setOptions(data.data.property_type);
     });
-  }
+  },[])
 
-const getCities = async () => {
+const getCities = useCallback (async () => {
   const header =  {  
     method: 'GET',
     headers: {
@@ -39,7 +39,7 @@ const getCities = async () => {
   await fetch(`${url2}area?id=1`,header).then((res) => res.json()).then((data) => {
     setCities(data.data);
   });
-}
+},[])
 
   useEffect(() => {
     getTypes();

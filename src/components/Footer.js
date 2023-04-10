@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import '../style/Footer.css';
 import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
@@ -13,18 +13,18 @@ function Footer () {
   const [links, setLinks] = useState('');
 
   // footer/about text
-  const getAboutText = async () =>{
+  const getAboutText = useCallback (async () => {
     await fetch(url).then((res) => res.json()).then((data) => {
       setAbout(data.data);
     });
-  }
+  },[])
 
   // links of social media
-  const getLinks = async () =>{
+  const getLinks = useCallback (async () => {
     await fetch(url).then((res) => res.json()).then((data) => {
       setLinks(data.data.social_links);
     });
-  }
+  },[])
 
   useEffect(() => {
     getAboutText();
@@ -33,7 +33,7 @@ function Footer () {
 
   return (
     <>
-    <section className='footer'>
+    <footer>
       <div className='container'>
         <div className='row'>
           <div className='logo-col col-lg-5 col-md-6 col-sm-12'>
@@ -73,7 +73,7 @@ function Footer () {
           </div>
         </div>
       </div>
-    </section>
+    </footer>
     
     <section className='rights'>
       <div className='container'>

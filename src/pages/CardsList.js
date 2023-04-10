@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import '../style/Cards.css';
 import Cards from '../components/Cards';
 import { Link } from 'react-router-dom';
@@ -6,17 +6,17 @@ import { useState, useEffect } from 'react';
 import { FaChevronRight } from "react-icons/fa";
 
 
-function CardsPage() {
+function CardsList() {
 
   const [cards, setCards] = useState([]);
 
   const url = 'https://test.osouly.com/public/api/home';
 
-  const getCards = async () => {
+  const getCards = useCallback (async () => {
     await fetch(url).then((res) => res.json()).then((data) => {
       setCards(data.data.property);
     });
-  }
+  },[])
 
   useEffect(() => {
     getCards();
@@ -52,5 +52,5 @@ function CardsPage() {
   )
 }
 
-export default CardsPage;
+export default CardsList;
 

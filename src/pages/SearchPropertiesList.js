@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import '../style/Props.css';
 import { useState, useEffect } from 'react';
 import { FaMinus } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 
-function PropsSearchPage  () {
+function SearchPropertiesList  () {
 
   const [options, setOptions] = useState([]);
   const [cities, setCities] = useState([]);
@@ -24,13 +24,13 @@ function PropsSearchPage  () {
     {id: '4', name: 'قطر'},
 ]
 
-const getTypes = async () => {
+const getTypes = useCallback (async () => {
   await fetch(url).then((res) => res.json()).then((data) => {
     setOptions(data.data.property_type);
   });
-}
+},[])
 
-const getCities = async () => {
+const getCities = useCallback (async () => {
   const header =  {  
     method: 'GET',
     headers: {
@@ -41,8 +41,7 @@ const getCities = async () => {
   await fetch(`${url2}area?id=1`,header).then((res) => res.json()).then((data) => {
     setCities(data.data);
   });
-}
-
+},[])
 useEffect(() => {
   getTypes();
   getCities();
@@ -182,4 +181,4 @@ const renderedCities = cities.map((city) => {
     </>
   );
 }
-export default PropsSearchPage;
+export default SearchPropertiesList;

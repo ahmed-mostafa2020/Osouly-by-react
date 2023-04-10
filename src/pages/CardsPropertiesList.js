@@ -1,20 +1,20 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Cards from '../components/Cards';
 import { useState, useEffect } from 'react';
 import '../style/Props.css';
 import '../style/Cards.css';
 
-function PropsCardsPage (){
+function CardsPropertiesList (){
 
   const [cards, setCards] = useState([]);
 
   const url = 'https://test.osouly.com/public/api/home';
 
-  const getCards = async () => {
+  const getCards = useCallback (async () => {
     await fetch(url).then((res) => res.json()).then((data) => {
       setCards(data.data.property);
     });
-  }
+  },[])
 
   useEffect(() => {
     getCards();
@@ -34,4 +34,4 @@ function PropsCardsPage (){
   )
 }
 
-export default PropsCardsPage ;
+export default CardsPropertiesList ;
