@@ -51,10 +51,11 @@ const getCities = useCallback (async () => {
   };
 
   const renderedTypes = options.map((option) => {
-    return <>
-    <li key={option.id} onClick={() => typeChange(option.name)}>
+    return (
+      <li key={option.id} onClick={() => typeChange(option.name)}>
       <Link className="dropdown-item">{option.name}</Link>
-    </li></>
+    </li>
+    )
   });
 
 
@@ -63,10 +64,10 @@ const getCities = useCallback (async () => {
   };
 
   const renderedCountries = countries.map((country) => {
-    return <>
+    return(
     <li key={country.id} onClick={() => countryChange(country.name)}>
       <Link className="dropdown-item">{country.name}</Link>
-    </li></>
+    </li>)
   });
 
   const cityChange = (name) => {
@@ -74,10 +75,10 @@ const getCities = useCallback (async () => {
   };
 
   const renderedCities = cities.map((city) => {
-    return <>
+    return( 
     <li key={city.id} onClick={() => cityChange(city.name)}>
       <Link className="dropdown-item">{city.name}</Link>
-    </li></>
+    </li>)
   });
 
   return (

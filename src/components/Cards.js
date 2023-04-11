@@ -18,11 +18,9 @@ const renderedImages = card.images.map((image, index) => {
     active = 'carousel-item ';
   }
   return( 
-    <>
-      <div className={active} >
-        <img className='card-img' src={image.path} alt={card.title} key={image.id} />
+      <div className={active} key={image.id}>
+        <img className='card-img' src={image.path} alt={card.title}  />
       </div>
-    </>
   );
 })
 

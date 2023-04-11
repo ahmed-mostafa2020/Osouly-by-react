@@ -48,19 +48,17 @@ function NavbarLarge() {
 
   // listing
   const renderedServices= serviceDrops.map((serviceDrop) => {
-    return <>
-        <li >
-          <Link to='./' key={serviceDrop.id}>{serviceDrop.title} </Link>
-        </li>
-    </>
+    return( 
+        <li key={serviceDrop.id}>
+          <Link to='./' >{serviceDrop.title} </Link>
+        </li>)
   });
 
   const renderedPages= pageDrops.map((pageDrop) => {
-    return <>
-        <li >
-          <Link to='./' key={pageDrop.id}>{pageDrop.title} </Link>
-        </li>
-    </>
+    return( 
+        <li key={pageDrop.id}>
+          <Link to='./' >{pageDrop.title} </Link>
+        </li>)
   });
 
   // const myFunction = (x) => {
@@ -130,18 +128,18 @@ function NavbarLarge() {
         </div>
 
                         {/* burger icon */}
-        <button class="burger-icon" type='button'  data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"  >
-          <div class="bar1"></div>
-          <div class="bar2"></div>
-          <div class="bar3"></div>
+        <button className="burger-icon" type='button'  data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"  >
+          <div className="bar1"></div>
+          <div className="bar2"></div>
+          <div className="bar3"></div>
         </button>
 
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-          <div class="offcanvas-header">
+        <div className="offcanvas offcanvas-start" tabIndex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+          <div className="offcanvas-header">
             <img src={logo} alt='logo'/>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
-          <div class="offcanvas-body">
+          <div className="offcanvas-body">
             <div>
             <Link className='title active' to='./'><span></span>الرئيسية</Link>
 
