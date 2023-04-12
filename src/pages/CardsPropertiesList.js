@@ -4,14 +4,15 @@ import { useState, useEffect } from 'react';
 import '../style/Props.css';
 import '../style/Cards.css';
 
+import { API_URLS } from '../util/API_URLS';
+
 function CardsPropertiesList (){
 
   const [cards, setCards] = useState([]);
 
-  const url = 'https://test.osouly.com/public/api/home';
 
   const getCards = useCallback (async () => {
-    await fetch(url).then((res) => res.json()).then((data) => {
+    await fetch(API_URLS.HOME).then((res) => res.json()).then((data) => {
       setCards(data.data.property);
     });
   },[])

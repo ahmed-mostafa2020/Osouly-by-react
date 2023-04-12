@@ -5,15 +5,16 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { FaChevronRight } from "react-icons/fa";
 
+import { API_URLS } from '../util/API_URLS';
+
 
 function CardsList() {
 
   const [cards, setCards] = useState([]);
 
-  const url = 'https://test.osouly.com/public/api/home';
 
   const getCards = useCallback (async () => {
-    await fetch(url).then((res) => res.json()).then((data) => {
+    await fetch(API_URLS.HOME).then((res) => res.json()).then((data) => {
       setCards(data.data.property);
     });
   },[])

@@ -3,14 +3,14 @@ import Services from '../components/Services';
 import '../style/Services.css';
 import { FaChevronRight } from "react-icons/fa";
 import { useState, useEffect } from 'react';
+import { API_URLS } from '../util/API_URLS';
 
 function ServicesList () {
 
-  const url = 'https://test.osouly.com/public/api/services';
   const[serviceItems, setServiceCItems] = useState([]);
 
   const getServiceItems = useCallback (async () => {
-    await fetch(url).then((res)=> res.json()).then((data) => {
+    await fetch(API_URLS.SERVICES).then((res)=> res.json()).then((data) => {
       setServiceCItems(data.data.items);
     })
   },[])

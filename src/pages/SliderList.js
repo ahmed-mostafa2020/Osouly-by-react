@@ -3,22 +3,17 @@ import Slider from '../components/Slider';
 import { useState, useEffect } from 'react';
 import '../style/Slider.css';
 
+import { API_URLS } from '../util/API_URLS';
+import { HEADER_API } from '../util/HEADER_API';
+
 function SliderList () {
 
   const [slidersWeb, setSlidersWeb] = useState([]);
-  const url = 'https://test.osouly.com/public/api/';
 
   // api request with header
   const getSlidersWeb = useCallback (async () => {
-    const header =  {  
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      }
-    }
 
-    await fetch(`${url}home`, header).then((res) => res.json()).then((data) => {
+    await fetch(API_URLS.HOME, HEADER_API).then((res) => res.json()).then((data) => {
       setSlidersWeb(data.data.slider_web);
     });
   },[])

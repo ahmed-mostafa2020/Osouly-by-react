@@ -3,13 +3,14 @@ import '../style/About.css';
 import logo from '../assets/logo.png';
 import { useState, useEffect } from 'react';
 
+import {API_URLS} from '../util/API_URLS';
+
 function About() {
 
-  const url = 'https://test.osouly.com/public/api/home';
   const [aboutText, setAboutText] = useState('');
 
   const getAboutText = useCallback (async () => {
-    await fetch(url).then((res) => res.json()).then((data) => {
+    await fetch(API_URLS.HOME).then((res) => res.json()).then((data) => {
       setAboutText(data.data.about);
     });
   },[])

@@ -4,37 +4,26 @@ import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
+import {API_URLS} from '../util/API_URLS';
+import { HEADER_API } from '../util/HEADER_API';
+
+
 function NavbarLarge() {
 
   const [serviceDrops, setServiceDrops] = useState([]);
   const [pageDrops, setPageDrops] = useState([]);
 
-  const url = 'https://test.osouly.com/public/api/data';
-
-
   // send requests
   const getServices = useCallback (async () => {
-    const header =  {  
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      }
-    };
-    await fetch(url, header).then((res) => res.json()).then((data) => {
+
+    await fetch(API_URLS.DATA, HEADER_API).then((res) => res.json()).then((data) => {
       setServiceDrops(data.data.services);
     });
   },[])
 
   const getPages= useCallback (async () => {
-    const header =  {  
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      }
-    };
-    await fetch(url, header).then((res) => res.json()).then((data) => {
+
+    await fetch(API_URLS.DATA, HEADER_API).then((res) => res.json()).then((data) => {
       setPageDrops(data.data.pages);
     });
   },[])

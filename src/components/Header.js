@@ -4,13 +4,15 @@ import '../style/Header.css';
 import { FaUserAlt,FaFacebookF ,FaInstagram, FaTwitter } from "react-icons/fa";
 import { useEffect, useState } from 'react';
 
+import {API_URLS} from '../util/API_URLS';
+
+
 function Header() {
-  const url = 'https://test.osouly.com/public/api/data';
   const [links, setLinks] = useState('');
 
   // links of social media
   const getLinks = useCallback (async () => {
-    await fetch(url).then((res) => res.json()).then((data) => {
+    await fetch(API_URLS.DATA).then((res) => res.json()).then((data) => {
       setLinks(data.data.social_links);
     });
   },[])

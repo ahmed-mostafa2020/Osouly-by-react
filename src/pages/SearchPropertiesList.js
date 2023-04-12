@@ -4,6 +4,9 @@ import { useState, useEffect } from 'react';
 import { FaMinus } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
+import { API_URLS } from '../util/API_URLS';
+import { HEADER_API } from '../util/HEADER_API';
+
 
 function SearchPropertiesList  () {
 
@@ -13,8 +16,6 @@ function SearchPropertiesList  () {
   const [placeHolderCountry, setPlaceHolderCountry ] = useState(' البلد');
   const [placeHolderCity, setPlaceHolderCity ] = useState(' المدينة');
 
-  const url = 'https://test.osouly.com/public/api/data';
-  const url2 = 'https://test.osouly.com/public/api/';
 
   // fake api for countries
   const countries =[
@@ -25,20 +26,14 @@ function SearchPropertiesList  () {
 ]
 
 const getTypes = useCallback (async () => {
-  await fetch(url).then((res) => res.json()).then((data) => {
+  await fetch(API_URLS.DATA).then((res) => res.json()).then((data) => {
     setOptions(data.data.property_type);
   });
 },[])
 
 const getCities = useCallback (async () => {
-  const header =  {  
-    method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    }
-  }
-  await fetch(`${url2}area?id=1`,header).then((res) => res.json()).then((data) => {
+
+  await fetch(API_URLS.SEARCH,HEADER_API).then((res) => res.json()).then((data) => {
     setCities(data.data);
   });
 },[])

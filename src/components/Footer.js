@@ -5,23 +5,24 @@ import { Link } from 'react-router-dom';
 import { FaFacebookF ,FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { useEffect, useState } from 'react';
 
+import {API_URLS} from '../util/API_URLS';
+
 
 function Footer () {
 
-  const url = 'https://test.osouly.com/public/api/data';
   const [about, setAbout] = useState('');
   const [links, setLinks] = useState('');
 
   // footer/about text
   const getAboutText = useCallback (async () => {
-    await fetch(url).then((res) => res.json()).then((data) => {
+    await fetch(API_URLS.DATA).then((res) => res.json()).then((data) => {
       setAbout(data.data);
     });
   },[])
 
   // links of social media
   const getLinks = useCallback (async () => {
-    await fetch(url).then((res) => res.json()).then((data) => {
+    await fetch(API_URLS.DATA).then((res) => res.json()).then((data) => {
       setLinks(data.data.social_links);
     });
   },[])
