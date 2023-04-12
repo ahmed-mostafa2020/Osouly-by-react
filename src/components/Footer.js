@@ -6,31 +6,25 @@ import { FaFacebookF ,FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { useEffect, useState } from 'react';
 
 import {API_URLS} from '../util/API_URLS';
-
+import { getApi } from './GetApi';
 
 function Footer () {
 
   const [about, setAbout] = useState('');
   const [links, setLinks] = useState('');
 
-  // footer/about text
-  const getAboutText = useCallback (async () => {
-    await fetch(API_URLS.DATA).then((res) => res.json()).then((data) => {
-      setAbout(data.data);
-    });
-  },[])
+  // footer/about text & links of social media
+  const getItems = useCallback (async () => {
+    const data = await getApi(API_URLS.DATA);
 
-  // links of social media
-  const getLinks = useCallback (async () => {
-    await fetch(API_URLS.DATA).then((res) => res.json()).then((data) => {
-      setLinks(data.data.social_links);
-    });
-  },[])
+    setAbout(data.data);
+    setLinks(data.data.social_links);
+
+  },[getApi, API_URLS.DATA]);
 
   useEffect(() => {
-    getAboutText();
-    getLinks();
-  },[]);
+    getItems();
+  },[getItems]);
 
   return (
     <>

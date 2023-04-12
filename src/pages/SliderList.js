@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import '../style/Slider.css';
 
 import { API_URLS } from '../util/API_URLS';
-import { HEADER_API } from '../util/HEADER_API';
+import { getApi } from '../components/GetApi';
 
 function SliderList () {
 
@@ -13,15 +13,14 @@ function SliderList () {
   // api request with header
   const getSlidersWeb = useCallback (async () => {
 
-    await fetch(API_URLS.HOME, HEADER_API).then((res) => res.json()).then((data) => {
-      setSlidersWeb(data.data.slider_web);
-    });
-  },[])
+    const data = await getApi(API_URLS.HOME, API_URLS.HEADER);
+    setSlidersWeb(data.data.slider_web);
+  },[getApi, API_URLS.HOME]);
+
 
   useEffect(() => {
     getSlidersWeb();
-
-  },[]);
+  },[getSlidersWeb]);
 
   const renderedSliderWeb = slidersWeb.map((slider,index) => {
     if(index === 0){
@@ -31,7 +30,6 @@ function SliderList () {
     }
     return <Slider active={activeSlider} slider={slider} key={slider.description} />;
   });
-
 
   return (
     <>
@@ -53,7 +51,6 @@ function SliderList () {
       </div>
       
     </section>
-
     </>
   )
 }

@@ -2,7 +2,7 @@ import './App.css';
 import { Routes ,Route } from 'react-router-dom';
 import Header from './components/Header';
 import NavbarLarge from './components/NavbarLarge';
-import Search from './components/Search';
+import SearchBox from './components/SearchBox';
 import SliderList from './pages/SliderList';
 import About from './components/About';
 import ServicesList from './pages/ServicesList';
@@ -15,8 +15,14 @@ import Properties from './pages/Properties';
 
 import Footer from './components/Footer';
 import CardsList from './pages/CardsList';
+// import { createContext } from 'react';
 
 function App() {
+  // const apiContext = createContext();
+
+
+
+
   
   return (
     <>
@@ -27,7 +33,7 @@ function App() {
         <Route path='/' element={
           <>
             <SliderList />
-            <Search />
+            <SearchBox />
             <CardsList />
             <About />
             <ServicesList />

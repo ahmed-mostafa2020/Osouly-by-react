@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import {API_URLS} from '../util/API_URLS';
-import { HEADER_API } from '../util/HEADER_API';
-
+import { getApi } from './GetApi';
 
 function NavbarLarge() {
 
@@ -14,26 +13,18 @@ function NavbarLarge() {
   const [pageDrops, setPageDrops] = useState([]);
 
   // send requests
-  const getServices = useCallback (async () => {
+  const getPages = useCallback (async () => {
 
-    await fetch(API_URLS.DATA, HEADER_API).then((res) => res.json()).then((data) => {
+    const data = await getApi(API_URLS.DATA, API_URLS.HEADER);
       setServiceDrops(data.data.services);
-    });
-  },[])
-
-  const getPages= useCallback (async () => {
-
-    await fetch(API_URLS.DATA, HEADER_API).then((res) => res.json()).then((data) => {
       setPageDrops(data.data.pages);
-    });
-  },[])
+
+    },[getApi, API_URLS.DATA]);
 
 
   useEffect(() => {
-    getServices();
     getPages();
-
-  },[]);
+  },[getPages]);
 
   // listing
   const renderedServices= serviceDrops.map((serviceDrop) => {

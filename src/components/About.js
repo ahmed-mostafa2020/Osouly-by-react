@@ -4,21 +4,22 @@ import logo from '../assets/logo.png';
 import { useState, useEffect } from 'react';
 
 import {API_URLS} from '../util/API_URLS';
+import { getApi } from './GetApi';
+
 
 function About() {
 
   const [aboutText, setAboutText] = useState('');
 
   const getAboutText = useCallback (async () => {
-    await fetch(API_URLS.HOME).then((res) => res.json()).then((data) => {
-      setAboutText(data.data.about);
-    });
-  },[])
+    const data = await getApi(API_URLS.HOME);
+    
+    setAboutText(data.data.about.meta_description);
+    },[getApi, API_URLS.HOME]);
 
-  
   useEffect(() => {
     getAboutText();
-  },[]);
+  },[getAboutText]);
 
   return (
     <>
@@ -30,7 +31,7 @@ function About() {
               <figure>
                 <img src={logo} alt='logo' />
               </figure>
-              <p> {aboutText.meta_description} </p>
+              <p> {aboutText} </p>
             </div>
           </div>
           <div className='video-col col-lg-6 col-md-6 col-sm-12'>

@@ -6,22 +6,22 @@ import { useState, useEffect } from 'react';
 import { FaChevronRight } from "react-icons/fa";
 
 import { API_URLS } from '../util/API_URLS';
+import { getApi } from '../components/GetApi';
 
 
 function CardsList() {
 
   const [cards, setCards] = useState([]);
 
-
   const getCards = useCallback (async () => {
-    await fetch(API_URLS.HOME).then((res) => res.json()).then((data) => {
+    const data = await getApi(API_URLS.HOME);
       setCards(data.data.property);
-    });
-  },[])
+  },[getApi, API_URLS.HOME]);
+
 
   useEffect(() => {
     getCards();
-  },[]);
+  },[getCards]);
 
 
   const renderedCards = cards.map( (card) => {

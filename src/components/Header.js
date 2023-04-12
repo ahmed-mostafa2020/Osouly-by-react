@@ -5,6 +5,7 @@ import { FaUserAlt,FaFacebookF ,FaInstagram, FaTwitter } from "react-icons/fa";
 import { useEffect, useState } from 'react';
 
 import {API_URLS} from '../util/API_URLS';
+import { getApi } from './GetApi';
 
 
 function Header() {
@@ -12,13 +13,13 @@ function Header() {
 
   // links of social media
   const getLinks = useCallback (async () => {
-    await fetch(API_URLS.DATA).then((res) => res.json()).then((data) => {
-      setLinks(data.data.social_links);
-    });
-  },[])
+    const data = await getApi(API_URLS.DATA)
+    setLinks(data.data.social_links);
+    },[getApi, API_URLS.DATA]);
+
   useEffect(() => {
     getLinks();
-  },[]);
+  },[getLinks]);
 
   return (
     <>

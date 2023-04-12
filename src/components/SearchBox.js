@@ -3,16 +3,16 @@ import '../style/Search.css';
 import { Link} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-function Search () {
+import { API_URLS } from '../util/API_URLS';
+import { getApi } from './GetApi';
+
+function SearchBox () {
 
   const [options, setOptions] = useState([]);
   const [cities, setCities] = useState([]);
   const [placeHolderType, setPlaceHolderType ] = useState('نوع الشقة');
   const [placeHolderCountry, setPlaceHolderCountry ] = useState(' البلد');
   const [placeHolderCity, setPlaceHolderCity ] = useState(' المدينة');
-
-  const url = 'https://test.osouly.com/public/api/data';
-  const url2 = 'https://test.osouly.com/public/api/';
 
     // fake api for countries
     const countries =[
@@ -23,28 +23,21 @@ function Search () {
   ]
 
   const getTypes = useCallback (async () => {
-    await fetch(url).then((res) => res.json()).then((data) => {
+    const data = await getApi(API_URLS.DATA);
       setOptions(data.data.property_type);
-    });
-  },[])
+  },[getApi, API_URLS.DATA]);
+
 
 const getCities = useCallback (async () => {
-  const header =  {  
-    method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    }
-  }
-  await fetch(`${url2}area?id=1`,header).then((res) => res.json()).then((data) => {
+  const data = await getApi(API_URLS.SEARCH, API_URLS.HEADER);
     setCities(data.data);
-  });
-},[])
+  },[getApi, API_URLS.SEARCH]);
+
 
   useEffect(() => {
     getTypes();
     getCities();
-  },[]);
+  },[getTypes, getCities]);
 
   const typeChange = (option) => {
     setPlaceHolderType(option);
@@ -152,4 +145,4 @@ const getCities = useCallback (async () => {
   )
 }
 
-export default Search;
+export default SearchBox;

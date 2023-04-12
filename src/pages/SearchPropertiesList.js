@@ -5,7 +5,7 @@ import { FaMinus } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 import { API_URLS } from '../util/API_URLS';
-import { HEADER_API } from '../util/HEADER_API';
+import { getApi } from '../components/GetApi';
 
 
 function SearchPropertiesList  () {
@@ -26,32 +26,27 @@ function SearchPropertiesList  () {
 ]
 
 const getTypes = useCallback (async () => {
-  await fetch(API_URLS.DATA).then((res) => res.json()).then((data) => {
+  const data = await getApi(API_URLS.DATA);
     setOptions(data.data.property_type);
-  });
-},[])
+},[getApi, API_URLS.DATA]);
 
 const getCities = useCallback (async () => {
+const data = await getApi(API_URLS.SEARCH, API_URLS.HEADER);
+  setCities(data.data);
+},[getApi, API_URLS.SEARCH]);
 
-  await fetch(API_URLS.SEARCH,HEADER_API).then((res) => res.json()).then((data) => {
-    setCities(data.data);
-  });
-},[])
 useEffect(() => {
   getTypes();
   getCities();
-},[]);
+},[getTypes, getCities]);
 
 
 const renderedTypes = options.map((option) => {
-  return <>
+  return( 
   <div key={option.id} className='radio-box'>
     <input type='radio' id={option.name} value={option.name} name='option'/>
-    <label for={option.name} >{option.name} </label>
-
-    
-  </div>
-  </>
+    <label htmlFor={option.name} >{option.name} </label>
+  </div>)
 });
 
 const countryChange = (name) => {
@@ -59,10 +54,10 @@ const countryChange = (name) => {
 };
 
 const renderedCountries = countries.map((country) => {
-  return <>
+  return( 
   <li key={country.id} onClick={() => countryChange(country.name)}>
     <Link className="dropdown-item">{country.name}</Link>
-  </li></>
+  </li>)
 });
 
 const cityChange = (name) => {
@@ -70,10 +65,10 @@ const cityChange = (name) => {
 };
 
 const renderedCities = cities.map((city) => {
-  return <>
+  return( 
   <li key={city.id} onClick={() => cityChange(city.name)}>
     <Link className="dropdown-item">{city.name}</Link>
-  </li></>
+  </li>)
 });
 
   return (

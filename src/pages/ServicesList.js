@@ -3,21 +3,23 @@ import Services from '../components/Services';
 import '../style/Services.css';
 import { FaChevronRight } from "react-icons/fa";
 import { useState, useEffect } from 'react';
+
 import { API_URLS } from '../util/API_URLS';
+import { getApi } from '../components/GetApi';
 
 function ServicesList () {
 
   const[serviceItems, setServiceCItems] = useState([]);
 
   const getServiceItems = useCallback (async () => {
-    await fetch(API_URLS.SERVICES).then((res)=> res.json()).then((data) => {
-      setServiceCItems(data.data.items);
-    })
-  },[])
+    const data = await getApi(API_URLS.SERVICES);
+    setServiceCItems(data.data.items);
+  },[getApi, API_URLS.SERVICES]);
+
 
   useEffect(() => {
     getServiceItems();
-  },[]);
+  },[getServiceItems]);
 
   const renderedItems = serviceItems.map((item) => {
       return ((item.id === 16) || (item.id === 19)) && <Services item={item} key={item.id} />
